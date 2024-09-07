@@ -1,7 +1,8 @@
-﻿using CleanArchitecture.Domain.Interfaces;
+﻿using CleanArchitecture.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace CleanArchitecture.Infrastructure.Data.Models;
-public class AppUser: IdentityUser, IUser
+public class AppUser: IdentityUser
 {
+    public List<Product>? Products { get; set; }
 }

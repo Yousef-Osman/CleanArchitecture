@@ -7,6 +7,8 @@ using System.Reflection;
 namespace CleanArchitecture.Infrastructure.Data;
 public class AppDbContext: IdentityDbContext<AppUser>
 {
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Brand> Brands { get; set; }
     public AppDbContext(DbContextOptions<AppDbContext> options): base(options)
     {
     }
@@ -17,9 +19,9 @@ public class AppDbContext: IdentityDbContext<AppUser>
 
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-        //modelBuilder.Entity<Product>()
-        //    .HasOne<AppUser>(p => p.Vendor)
-        //    .WithMany()
-        //    .HasForeignKey(p => p.VendorId);
+        modelBuilder.Entity<Product>()
+            .HasOne<AppUser>()
+            .WithMany(u => u.Products)
+            .HasForeignKey(p => p.VendorId);
     }
 }
