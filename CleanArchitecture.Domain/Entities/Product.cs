@@ -1,5 +1,4 @@
 ﻿using CleanArchitecture.Domain.Common;
-using CleanArchitecture.Domain.Interfaces;
 
 namespace CleanArchitecture.Domain.Entities;
 public class Product : FullAuditedEntity<long>
@@ -16,8 +15,8 @@ public class Product : FullAuditedEntity<long>
 
     public long BrandId { get; set; }
 
-    public required string VendorId { get; set; }
+    //FK relation is configured using flient apis
+    public required string VendorId { get; set; } 
 
     public Brand? Brand { get; set; }
-    //public required IUser Vendor { get; set; }
 }
