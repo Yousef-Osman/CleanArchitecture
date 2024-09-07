@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace CleanArchitecture.Application.Commands.Product.CreateProduct;
+namespace CleanArchitecture.Application.Commands.Products.CreateProduct;
 
 public record CreateProductCommand(
     string Name, 

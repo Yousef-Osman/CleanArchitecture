@@ -1,7 +1,5 @@
-﻿using Azure.Core;
-using CleanArchitecture.Application.Commands.Product.CreateProduct;
+﻿using CleanArchitecture.Application.Commands.Products.CreateProduct;
 using CleanArchitecture.Application.Queries.Products.GetProduct;
-using CleanArchitecture.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

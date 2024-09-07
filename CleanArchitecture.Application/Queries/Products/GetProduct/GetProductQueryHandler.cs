@@ -2,7 +2,6 @@
 using CleanArchitecture.Domain.Entities;
 using MediatR;
 
-
 namespace CleanArchitecture.Application.Queries.Products.GetProduct;
 internal class GetProductQueryHandler : IRequestHandler<GetProductQuery, GetProductQueryResponse>
 {
