@@ -1,5 +1,6 @@
 using CleanArchitecture.Application;
 using CleanArchitecture.Infrastructure;
+using CleanArchitecture.Infrastructure.Data.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -22,6 +23,9 @@ var app = builder.Build();
 
     app.UseHttpsRedirection();
 
+    app.MapIdentityApi<AppUser>();
+
+    app.UseAuthorization();
     app.UseAuthorization();
 
     app.MapControllers();
