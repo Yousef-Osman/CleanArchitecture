@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\Application\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

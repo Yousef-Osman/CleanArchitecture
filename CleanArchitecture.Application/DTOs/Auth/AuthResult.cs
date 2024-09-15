@@ -1,5 +1,5 @@
 ﻿namespace CleanArchitecture.Application.DTOs.Auth;
-public class AuthResultDto
+public class AuthResult
 {
     public bool Success { get; set; }
     public string? Token { get; set; }
