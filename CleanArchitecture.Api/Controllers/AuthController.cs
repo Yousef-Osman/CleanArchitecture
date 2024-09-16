@@ -14,8 +14,8 @@ public class AuthController : ControllerBase
         _authService = authService;
     }
 
-    [HttpPost("register")]
-    public async Task<IActionResult> Register(RegisterRequestDto input)
+    [HttpPost("Register")]
+    public async Task<IActionResult> Register(RegisterRequest input)
     {
         var result = await _authService.RegisterAsync(input);
 
@@ -25,8 +25,8 @@ public class AuthController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost("login")]
-    public async Task<IActionResult> Login(LoginRequestDto input)
+    [HttpPost("Login")]
+    public async Task<IActionResult> Login(LoginRequest input)
     {
         var result = await _authService.LoginAsync(input);
 
@@ -35,12 +35,4 @@ public class AuthController : ControllerBase
 
         return Ok(result);
     }
-
-    //[HttpPost("refresh-token")]
-    //public async Task<IActionResult> RefreshToken(RefreshTokenRequestDto input)
-    //{
-    //    var result = await _authService.RefreshTokenAsync(input);
-    //    if (!result.Success) return Unauthorized(result.Errors);
-    //    return Ok(result.Token);
-    //}
 }
