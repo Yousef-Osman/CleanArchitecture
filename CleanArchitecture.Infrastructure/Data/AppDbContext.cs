@@ -13,15 +13,10 @@ public class AppDbContext: IdentityDbContext<AppUser>
     {
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder builder)
     {
-        base.OnModelCreating(modelBuilder);
+        base.OnModelCreating(builder);
 
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
-        modelBuilder.Entity<Product>()
-            .HasOne<AppUser>()
-            .WithMany(u => u.Products)
-            .HasForeignKey(p => p.VendorId);
+        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }
