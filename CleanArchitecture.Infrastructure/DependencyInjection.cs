@@ -31,8 +31,7 @@ public static class DependencyInjection
         services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
         services.AddAuthorizationBuilder();
 
-        services.AddScoped<IUserService, UserService>();
-        services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IAuthService, AuthService>();
         services.AddScoped(typeof(IReadRepository<,>), typeof(GenericRepository<,>));
         services.AddScoped(typeof(IRepository<,>), typeof(GenericRepository<,>));
         services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -44,7 +43,7 @@ public static class DependencyInjection
     {
         services.Configure<JwtSettings>(config.GetSection(nameof(JwtSettings)));
 
-        var key = Encoding.ASCII.GetBytes(config["JwtSettings:Key"]);
+        var key = Encoding.ASCII.GetBytes(config["JwtSettings:Key"] ?? string.Empty);
 
         services.AddAuthentication(options =>
         {

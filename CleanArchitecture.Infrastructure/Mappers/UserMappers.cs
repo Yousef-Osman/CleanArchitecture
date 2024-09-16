@@ -9,6 +9,8 @@ public static class UserMappers
         return new UserDto { 
             Id = user.Id,
             UserName = user.UserName,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
             Email = user.Email,
             EmailConfirmed = user.EmailConfirmed,
             PhoneNumber = user.PhoneNumber,
@@ -23,6 +25,8 @@ public static class UserMappers
         {
             Id = user.Id,
             UserName = user.UserName,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
             Email = user.Email,
             EmailConfirmed = user.EmailConfirmed,
             PhoneNumber = user.PhoneNumber,
