@@ -1,14 +1,14 @@
 ﻿using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Infrastructure.Data.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using CleanArchitecture.Infrastructure.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
 namespace CleanArchitecture.Infrastructure.Data;
-public class AppDbContext: IdentityDbContext<AppUser>
+public class AppDbContext: DbContext
 {
+    public DbSet<User> Users { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Brand> Brands { get; set; }
+
     public AppDbContext(DbContextOptions<AppDbContext> options): base(options)
     {
     }
@@ -17,6 +17,6 @@ public class AppDbContext: IdentityDbContext<AppUser>
     {
         base.OnModelCreating(builder);
 
-        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        builder.ApplyConfiguration(new UserConfiguration());
     }
 }

@@ -1,7 +1,7 @@
 ﻿using CleanArchitecture.Application.Interfaces.Persistence;
 using CleanArchitecture.Infrastructure.Data;
 
-namespace CleanArchitecture.Infrastructure.Repositories;
+namespace CleanArchitecture.Infrastructure.Data.Repositories;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly AppDbContext _dbContext;

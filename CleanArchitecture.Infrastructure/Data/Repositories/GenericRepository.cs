@@ -1,10 +1,9 @@
 ﻿using CleanArchitecture.Application.Interfaces.Persistence;
 using CleanArchitecture.Domain.Common;
-using CleanArchitecture.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace CleanArchitecture.Infrastructure.Repositories;
+namespace CleanArchitecture.Infrastructure.Data.Repositories;
 public class GenericRepository<TEntity, TKey> : IRepository<TEntity, TKey>
     where TEntity : BaseEntity<TKey>
     where TKey : IComparable

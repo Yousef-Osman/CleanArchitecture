@@ -1,15 +1,13 @@
-﻿using CleanArchitecture.Infrastructure.Data.Models;
+﻿using CleanArchitecture.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CleanArchitecture.Infrastructure.Data.Configurations;
-public class UserConfiguration : IEntityTypeConfiguration<AppUser>
+public class UserConfiguration : IEntityTypeConfiguration<User>
 {
-    public void Configure(EntityTypeBuilder<AppUser> builder)
+    void IEntityTypeConfiguration<User>.Configure(EntityTypeBuilder<User> builder)
     {
-        builder.HasIndex(u => u.Email).IsUnique();
-
-        builder.Property(u => u.Email)
-            .IsRequired();
+        builder.Property(x => x.IdentityUserId)
+            .HasMaxLength(450);
     }
 }

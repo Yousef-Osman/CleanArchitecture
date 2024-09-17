@@ -2,9 +2,10 @@
 using CleanArchitecture.Application.Interfaces.Persistence;
 using CleanArchitecture.Infrastructure.Common;
 using CleanArchitecture.Infrastructure.Data;
-using CleanArchitecture.Infrastructure.Data.Models;
-using CleanArchitecture.Infrastructure.Repositories;
-using CleanArchitecture.Infrastructure.Services;
+using CleanArchitecture.Infrastructure.Data.Repositories;
+using CleanArchitecture.Infrastructure.Identity;
+using CleanArchitecture.Infrastructure.Identity.Models;
+using CleanArchitecture.Infrastructure.Identity.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,12 +19,14 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config)
     {
-        string defaultConnectionString = config.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string not found.");
+        string defaultConnectionString = config.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Default connection string not found.");
+        string identityConnectionString = config.GetConnectionString("IdentityConnection") ?? throw new InvalidOperationException("Identity connection string not found.");
 
         services.AddDbContext<AppDbContext>(options => options.UseSqlServer(defaultConnectionString));
+        services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(identityConnectionString));
 
         services.AddIdentityCore<AppUser>()
-            .AddEntityFrameworkStores<AppDbContext>()
+            .AddEntityFrameworkStores<AppIdentityDbContext>()
             .AddDefaultTokenProviders();
 
         services.AddAuthentication(config);

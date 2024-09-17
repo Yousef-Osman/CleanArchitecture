@@ -1,12 +1,13 @@
 ﻿using CleanArchitecture.Application.DTOs.Auth;
-using CleanArchitecture.Infrastructure.Data.Models;
+using CleanArchitecture.Infrastructure.Identity.Models;
 
-namespace CleanArchitecture.Infrastructure.Mappers;
-public static class UserMappers
+namespace CleanArchitecture.Infrastructure.Identity.Mappers;
+public static class AppUserMappers
 {
     public static UserDto ToUserDto(this AppUser user)
     {
-        return new UserDto { 
+        return new UserDto
+        {
             Id = user.Id,
             UserName = user.UserName,
             FirstName = user.FirstName,
